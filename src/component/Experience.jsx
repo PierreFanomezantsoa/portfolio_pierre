@@ -3,12 +3,12 @@ import { ArrowUpRight, Github } from "lucide-react";
 import { motion } from "framer-motion";
 
 // Tes imports d'images (conservés)
-import Note from "../img/notes.avif";
-import Inscription from "../img/inscription.webp";
-import Medicine from "../img/medicine.jpg";
-import Payment from "../img/payment.jpg";
-import Avions from "../img/Problème_d'affect.png";
-import Kiosque from "../img/kiosque_num.webp";
+import Note from "../img/inscription.png";
+import Inscription from "../img/inscription1.png";
+import Medicine from "../img/medicine.png";
+import Payment from "../img/mobile_money.png";
+import Avions from "../img/affectation.jpg";
+import Kiosque from "../img/kiosque.jpg";
 
 const projects = [
   {
@@ -57,7 +57,7 @@ const projects = [
 
 export default function Portfolio() {
   return (
-    <div id="portfolio" className="py-20 md:py-28 px-4 md:px-10 max-w-7xl mx-auto relative z-10">
+    <div id="portfolio" className="py-0 md:py-0 px-4 md:px-10 max-w-7xl mx-auto relative z-10">
       
       <div className="flex flex-col items-center text-center mb-16 md:mb-20">
         <motion.span 

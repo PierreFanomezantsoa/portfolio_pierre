@@ -31,7 +31,7 @@ function Contact() {
   };
 
   return (
-    <div className="w-full py-12 md:py-24 px-4 md:px-8 overflow-hidden">
+    <div className="w-full py-0 md:py-0 px-4 md:px-8 overflow-hidden">
       <AnimatePresence mode="wait">
         {submitted ? (
           <motion.div 

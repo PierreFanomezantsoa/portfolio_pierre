@@ -9,7 +9,7 @@ function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#020617] pt-16 md:pt-32 pb-8 md:pb-14 overflow-hidden">
+    <footer className="relative bg-[#020617] pt-8 md:pt-12 pb-6 md:pb-8 overflow-hidden">
       {/* Ligne de séparation cybernétique */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-green-500/30 to-transparent"></div>
       

@@ -107,7 +107,7 @@ function CategoryCard({ data, index }) {
 // --- Composant Principal ---
 export default function SkillsSection() {
   return (
-    <section className="py-24 px-4 max-w-7xl mx-auto">
+    <section className="py-0 px-4 max-w-7xl mx-auto">
       {/* En-tête */}
       <div className="text-center mb-20">
         <motion.span 

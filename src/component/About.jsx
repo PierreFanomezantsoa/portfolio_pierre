@@ -22,7 +22,7 @@ export default function About() {
   }, []);
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20 lg:gap-32 px-6 py-10 md:py-20 overflow-hidden">
+    <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20 lg:gap-32 px-6 py-0 md:py-0 overflow-hidden">
 
       {/* Colonne Image - Réduite sur mobile pour un meilleur "Above the fold" */}
       <div className="order-1 md:order-2 flex-shrink-0 relative">
