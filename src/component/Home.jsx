@@ -115,6 +115,7 @@ function AnimatedBackground() {
 }
 
 // ANIMATION DES SECTIONS
+//bonjours
 const AnimatedSection = ({ id, children }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once:true, amount:0.1 });
