@@ -3,8 +3,8 @@ import { ArrowUpRight, Github } from "lucide-react";
 import { motion } from "framer-motion";
 
 // Tes imports d'images (conservés)
-import Note from "../img/inscription.png";
-import Inscription from "../img/inscription1.png";
+import Note from "../img/notes.png";
+import Inscription from "../img/Inscription1.png";
 import Medicine from "../img/medicine.png";
 import Payment from "../img/mobile_money.png";
 import Avions from "../img/affectation.jpg";
