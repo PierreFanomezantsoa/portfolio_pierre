@@ -10,6 +10,8 @@ import Payment from "../img/mobile_money.png";
 import Avions from "../img/affectation.jpg";
 import Kiosque from "../img/kiosque.jpg";
 
+
+
 const projects = [
   {
     name: "Inscription Étudiant",
