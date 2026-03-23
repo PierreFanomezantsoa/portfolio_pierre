@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Download } from "lucide-react";
 import image1 from "../img/pierre-modified.png";
-import CV from "../img/cv.pdf";
+import CV from "../img/cv_stage.pdf";
 
 const roles = [
   "Développeur Full-Stack JS",
