@@ -31,7 +31,7 @@ const projects = [
     name: "Mobile Money",
     description: "Simulation d'échanges sécurisés en Java. Protocoles de chiffrement.",
     image: Payment,
-    github: "https://github.com/ton-projet3",
+    github: "https://github.com/PierreFanomezantsoa/mobile_money.git",
     tags: ["Java", "MySQL"],
   },
   {
