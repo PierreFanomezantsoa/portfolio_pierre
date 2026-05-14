@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linkedin, Github, Mail, MessageCircle, ArrowUp } from 'lucide-react';
+import { Linkedin, Github, Mail, Globe, ArrowUp } from 'lucide-react';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -63,10 +63,10 @@ function Footer() {
               Social
             </span>
             <div className="flex gap-3">
-              <SocialIcon href="https://linkedin.com/in/votre-profil" icon={<Linkedin size={16} />} />
-              <SocialIcon href="https://github.com/votre-username" icon={<Github size={16} />} />
-              <SocialIcon href="https://wa.me/261342626760" icon={<MessageCircle size={16} />} />
-              <SocialIcon href="mailto:rnandrasanarivo@gmail.com" icon={<Mail size={16} />} />
+              <SocialIcon href="https://www.linkedin.com/in/nandrasanarivo-pierre-rafanomezantsoa" icon={<Linkedin size={16} />} />
+              <SocialIcon href="https://github.com/PierreFanomezantsoa" icon={<Github size={16} />} />
+              <SocialIcon href="https://www.facebook.com/herman.rnp/" icon={<Globe size={16} />} />
+              <SocialIcon href="mailto:rnandrasanarivopierre@gmail.com" icon={<Mail size={16} />} />
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@ function Footer() {
             </p>
             <div className="flex items-center gap-2 text-slate-500 text-[8px] md:text-[9px] font-bold uppercase tracking-widest">
                <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(20,184,166,0.8)]"></span>
-               Fianarantsoa, MG • Full-Stack Developer
+               Fianarantsoa, MG • Développeur Full-Stack
             </div>
           </div>
           

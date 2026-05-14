@@ -9,6 +9,7 @@ import Medicine from "../img/medicine.png";
 import Payment from "../img/mobile_money.png";
 import Avions from "../img/affectation.jpg";
 import Kiosque from "../img/kiosque.jpg";
+import SID from "../img/geographique.png";
 
 
 
@@ -55,6 +56,13 @@ const projects = [
     github: "https://github.com/PierreFanomezantsoa/Front_kiosque.git",
     tags: ["React Native", "NestJS"],
   },
+   {
+    name: "Projet SID",
+    description: "Application décisionnelle basée sur Python Flask, React JS et Apache Hive, permettant l’exploration, l’analyse et la visualisation de données issues d’un environnement Data Warehouse.",
+    image: SID,
+    github: "https://github.com/PierreFanomezantsoa/Projet_SID.git",
+    tags: ["React JS", "Python Flask", "Apache Hive"],
+  },
 ];
 
 export default function Portfolio() {
@@ -67,7 +75,7 @@ export default function Portfolio() {
           whileInView={{ opacity: 1 }}
           className="text-green-400 text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block"
         >
-          Engineering & Design
+          Ingénierie & Design
         </motion.span>
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}

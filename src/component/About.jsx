@@ -5,10 +5,10 @@ import image1 from "../img/pierre-modified.png";
 import CV from "../img/cv_stage.pdf";
 
 const roles = [
-  "Développeur Full-Stack JS",
-  "Expert Java Spring Boot",
-  "Architecte PHP Symfony",
-  "Designer d'Interfaces UI/UX",
+  "Développeur Full-Stack",
+  "Étudiant en Génie Logiciel",
+  "Spécialiste Base de Données",
+  "Développeur Web",
 ];
 
 export default function About() {
@@ -93,10 +93,9 @@ export default function About() {
         </div>
 
         <p className="mt-4 text-gray-300 text-sm md:text-lg leading-relaxed max-w-md mx-auto md:mx-0">
-          Architecte de solutions digitales, je fusionne la rigueur du 
-          <span className="text-green-500 font-semibold "> Back-end</span> avec l'élégance de l' 
-          <span className="text-green-500 font-semibold "> Expérience Utilisateur</span>. 
-          Basé à <span className="text-green-500">Fianarantsoa</span>, j'accompagne vos projets vers l'excellence.
+          Étudiant de l'École Nationale d'Informatique de Fianarantsoa, 
+          obtenu Licence Professionnelle en 2023-2024 suivant le parcours Génie logiciel et base de données.
+          Passionné par le développement Full-Stack, je crée des solutions innovantes et performantes.
         </p>
 
         {/* Bouton de téléchargement - Largeur totale sur petit mobile */}

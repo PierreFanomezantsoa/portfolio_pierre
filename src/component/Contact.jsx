@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle2, Mail, MapPin, Github, Linkedin, ArrowRight } from 'lucide-react';
+import { Send, CheckCircle2, Mail, MapPin, Github, Linkedin, Globe, Smartphone, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 function Contact() {
@@ -107,17 +107,25 @@ function Contact() {
                   <div className="relative">
                     <div className="absolute -left-[49px] lg:-left-[57px] top-1.5 w-4 h-4 rounded-full bg-[#020617] border-2 border-gray-600" />
                     <h4 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-2">Ma Zone</h4>
-                    <p className="text-white text-base md:text-lg font-medium">Antananarivo, Madagascar</p>
+                    <p className="text-white text-base md:text-lg font-medium">Fianarantsoa, Madagascar</p>
                   </div>
 
                   {/* Item 3 */}
                   <div className="relative">
                     <div className="absolute -left-[49px] lg:-left-[57px] top-1.5 w-4 h-4 rounded-full bg-[#020617] border-2 border-gray-600" />
                     <h4 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-2">Social</h4>
-                    <div className="flex gap-5 mt-4">
-                      <a href="#" className="p-2 bg-white/5 rounded-lg text-gray-400 hover:text-green-500 transition-colors"><Linkedin size={20} /></a>
-                      <a href="#" className="p-2 bg-white/5 rounded-lg text-gray-400 hover:text-green-500 transition-colors"><Github size={20} /></a>
+                    <div className="flex gap-4 mt-4">
+                      <a href="https://www.linkedin.com/in/nandrasanarivo-pierre-rafanomezantsoa" target="_blank" rel="noreferrer" className="p-2 bg-white/5 rounded-lg text-gray-400 hover:text-green-500 transition-colors" title="LinkedIn: Nandrasanarivo Pierre RAFANOMEZANTSOA"><Linkedin size={20} /></a>
+                      <a href="https://www.facebook.com/herman.rnp/" target="_blank" rel="noreferrer" className="p-2 bg-white/5 rounded-lg text-gray-400 hover:text-green-500 transition-colors" title="Facebook: herman.rnp"><Globe size={20} /></a>
+                      <a href="https://wa.me/261342626760" target="_blank" rel="noreferrer" className="p-2 bg-white/5 rounded-lg text-gray-400 hover:text-green-500 transition-colors" title="WhatsApp: +261 34 26 267 60"><Smartphone size={20} /></a>
                     </div>
+                  </div>
+
+                  {/* WhatsApp */}
+                  <div className="relative">
+                    <div className="absolute -left-[49px] lg:-left-[57px] top-1.5 w-4 h-4 rounded-full bg-[#020617] border-2 border-gray-600" />
+                    <h4 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-2">WhatsApp</h4>
+                    <p className="text-white text-base md:text-lg font-medium">+261 34 26 267 60</p>
                   </div>
 
                   {/* Carte Statut */}

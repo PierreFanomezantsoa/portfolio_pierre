@@ -255,7 +255,7 @@ export default function Home() {
         <section id="home" className="relative min-h-screen flex flex-col items-center justify-center text-center px-6">
           <motion.div initial={{opacity:0, y:30}} animate={{opacity:1, y:0}} transition={{duration:1}}>
             <span className="inline-block px-4 py-1 border border-green-500/30 rounded-full text-green-400 text-[10px] font-bold uppercase tracking-[0.4em] mb-6 bg-green-500/5 backdrop-blur-sm">
-              Available for New Projects
+              Disponible pour nouveaux projets
             </span>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter leading-[0.9] mb-8 uppercase">
               Architecte<br/>
