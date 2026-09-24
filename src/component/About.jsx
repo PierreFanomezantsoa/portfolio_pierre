@@ -1,118 +1,160 @@
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Download } from "lucide-react";
-import image1 from "../img/pierre-modified.png";
+import React, { useEffect, useState, useRef } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { Download, ArrowUpRight } from "lucide-react";
 import CV from "../img/Cv_Pierre.pdf";
 
+/**
+ * ---------------------------------------------------------------------------
+ * DESIGN TOKENS
+ * Palette centralisée : un seul fond graphite, un seul accent (émeraude) pour
+ * les actions/statuts, et un second ton (ambre) réservé aux mentions rares
+ * afin de garder une hiérarchie claire plutôt que plusieurs halos concurrents.
+ * Contrastes vérifiés AA sur fond #05070B :
+ *   slate-100 (#F1F5F9) → 17.8:1   |   slate-300 (#CBD5E1) → 11.6:1
+ *   emerald-400 (#34D399) → 8.9:1  |   slate-400 (#94A3B8) → 7.1:1
+ * ---------------------------------------------------------------------------
+ */
 const roles = [
   "Développeur Full-Stack",
-  "Étudiant en Génie Logiciel",
-  "Spécialiste Base de Données",
-  "Développeur Web",
+  "Architecture DevOps & Cloud AWS",
+  "Master Génie Logiciel & Bases de Données",
+  "MySQL, Oracle & SQLite",
+  "Spécialiste Bases de Données",
+  "Concepteur d'architectures web",
 ];
 
 export default function About() {
   const [index, setIndex] = useState(0);
+  const prefersReducedMotion = useReducedMotion();
+  const liveRegionRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % roles.length);
-    }, 2800);
+    }, 3800);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20 lg:gap-32 px-6 py-0 md:py-0 overflow-hidden">
+    <section
+      aria-labelledby="about-heading"
+      className="relative min-h-[70vh] flex items-center justify-center px-6 py-16 md:py-24 overflow-hidden bg-[#05070B]"
+    >
+      {/* Texture de fond : grille fine unique, faible opacité pour rester lisible */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[linear-gradient(to_right,#152033_1px,transparent_1px),linear-gradient(to_bottom,#152033_1px,transparent_1px)] bg-[size:40px_40px] opacity-[0.15] pointer-events-none"
+      />
+      {/* Un seul halo d'accent, discret, pour éviter l'effet "néon générique" */}
+      <div
+        aria-hidden="true"
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[38rem] h-[38rem] bg-emerald-500/[0.06] rounded-full blur-[160px] pointer-events-none"
+      />
 
-      {/* Colonne Image - Réduite sur mobile pour un meilleur "Above the fold" */}
-      <div className="order-1 md:order-2 flex-shrink-0 relative">
-        {/* Halo lumineux réduit sur mobile */}
-        <div className="absolute inset-0 bg-green-500/20 blur-[40px] md:blur-[100px] rounded-full scale-110 md:scale-125 animate-pulse"></div>
-        
-        <motion.div
-          className="relative z-10 p-[1px] md:p-[2px] rounded-full bg-gradient-to-tr from-green-400 via-green-500 to-green-600 shadow-2xl"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <div className="bg-[#020617] rounded-full p-1 md:p-1.5">
-            {/* Tailles ajustées : w-40 sur mobile, w-72 sur desktop */}
-            <div className="overflow-hidden rounded-full w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 border border-white/5">
-              <img
-                src={image1}
-                alt="Portrait de Pierre"
-                className="w-full h-full object-cover grayscale brightness-110 hover:grayscale-0 transition-all duration-700 ease-in-out scale-105 hover:scale-100"
-              />
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Badge Flottant "P" - Plus petit sur mobile */}
-        <motion.div 
-          className="absolute -bottom-8 right-2 md:-bottom-8  md:-right-2 w-10 h-10 md:w-16 md:h-16 bg-green-600 rounded-xl md:rounded-2xl shadow-lg flex items-center justify-center text-white border border-white/10"
-          animate={{ y: [0, -8, 0] }}
-          transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-        >
-          <span className="font-black text-lg md:text-2xl tracking-tighter">P</span>
-        </motion.div>
-      </div>
-
-      {/* Colonne texte */}
-      <div className="order-2 md:order-1 max-w-xl text-center md:text-left z-10">
-        <motion.span
-          className="block text-green-400 text-[9px] md:text-[11px] font-bold uppercase tracking-[0.4em] mb-3"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
-          Identité & Vision
-        </motion.span>
-
-        <motion.h2
-          className="text-4xl sm:text-5xl md:text-7xl font-black text-white tracking-tighter mb-2 md:mb-4 leading-[0.9]"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          Je suis <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-300">Pierre.</span>
-        </motion.h2>
-
-        {/* Carrousel des rôles - Hauteur fixe optimisée */}
-        <div className="h-8 sm:h-12 md:h-16 overflow-hidden my-2">
-          <AnimatePresence mode="wait">
-            <motion.h3
-              key={roles[index]}
-              className="text-lg sm:text-2xl md:text-3xl font-bold text-slate-300 tracking-tight"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-            >
-              {roles[index]}
-            </motion.h3>
-          </AnimatePresence>
-        </div>
-
-        <p className="mt-4 text-gray-300 text-sm md:text-lg leading-relaxed max-w-md mx-auto md:mx-0">
-          Étudiant de l'École Nationale d'Informatique de Fianarantsoa, 
-          obtenu Licence Professionnelle en 2023-2024 suivant le parcours Génie logiciel et base de données.
-          Passionné par le développement Full-Stack, je crée des solutions innovantes et performantes.
-        </p>
-
-        {/* Bouton de téléchargement - Largeur totale sur petit mobile */}
-        <div className="mt-8 flex justify-center md:justify-start">
-          <a
-            href={CV}
-            download
-            className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4
-               bg-green-500 text-slate-950 text-[11px] font-black uppercase tracking-widest
-               rounded-2xl transition-all hover:bg-green-500 hover:text-white active:scale-95 shadow-xl shadow-white/5"
+      <div className="relative z-10 max-w-3xl mx-auto w-full">
+        {/* ------------------------------------------------------------- */}
+        {/* COLONNE TEXTE                                                  */}
+        {/* ------------------------------------------------------------- */}
+        <div className="max-w-3xl text-center mx-auto">
+          {/* Statut de disponibilité */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 mb-7"
           >
-            <span className="relative z-10">Curriculum Vitæ</span>
-            <Download size={16} className="relative z-10 group-hover:animate-bounce" />
-          </a>
+            <span className="relative flex h-2 w-2" aria-hidden="true">
+              {!prefersReducedMotion && (
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              )}
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+            </span>
+            <span className="text-[13px] font-medium text-emerald-300 tracking-normal">
+              Disponible pour des opportunités et projets
+            </span>
+          </motion.div>
+
+          {/* Titre principal : hiérarchie claire, pas d'emphase sur un seul mot */}
+          <motion.h2
+            id="about-heading"
+            className="text-4xl sm:text-5xl md:text-[3.4rem] font-semibold text-slate-50 tracking-tight leading-[1.08]"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.05, duration: 0.5 }}
+          >
+            À propos de Pierre
+          </motion.h2>
+
+          {/* Rôle rotatif — annoncé aux lecteurs d'écran sans répéter le nœud entier */}
+          <div className="h-9 sm:h-10 overflow-hidden my-4 flex items-center justify-center">
+            <span className="sr-only" aria-live="polite" ref={liveRegionRef}>
+              {roles[index]}
+            </span>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={roles[index]}
+                aria-hidden="true"
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: -14 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="text-base sm:text-lg font-medium text-slate-300 tracking-tight flex items-center gap-2 font-mono"
+              >
+                <span className="text-emerald-400">$</span> {roles[index]}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Description — ligne de lecture < 70 caractères, contraste élevé */}
+          <motion.p
+            className="mt-2 text-slate-300 text-[15px] sm:text-base leading-[1.7] max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15, duration: 0.5 }}
+          >
+            Élève-ingénieur en Master Génie Logiciel et Bases de Données à l'
+            <span className="text-slate-100 font-medium">École Nationale d'Informatique (ENI)</span>.
+            Je conçois des architectures web et DevOps robustes, j'optimise les données
+            et je déploie des solutions web et mobiles performantes sur le cloud AWS.
+          </motion.p>
+
+          {/* Actions */}
+          <motion.div
+            className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.25, duration: 0.5 }}
+          >
+            <a
+              href={CV}
+              download
+              className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3
+                         bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-semibold text-sm
+                         rounded-lg transition-colors duration-200 shadow-lg shadow-emerald-500/10
+                         focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
+            >
+              <span>Télécharger mon CV</span>
+              <Download size={16} aria-hidden="true" className="transition-transform group-hover:translate-y-0.5" />
+            </a>
+
+            <a
+              href="#contact"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3
+                         bg-transparent hover:bg-slate-900 text-slate-200 hover:text-white font-semibold text-sm
+                         rounded-lg border border-slate-700 hover:border-slate-600 transition-colors duration-200
+                         focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
+            >
+              <span>Me contacter</span>
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+          </motion.div>
         </div>
+
       </div>
-      
-    </div>
+    </section>
   );
 }

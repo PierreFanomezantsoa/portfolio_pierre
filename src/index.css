@@ -1,33 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 :root {
-	--bg-start: #07142a; /* deep navy */
-	--bg-mid: #081733;
-	--bg-end: #010612; /* near black blue */
-	--text-color: #E6F3FF; /* soft high-contrast text */
+  --bg-dark: #03070b;
+  --bg-surface: #0b1c2b;
+  --border-color: #203243;
+  --accent-emerald: #10b981;
+  --accent-emerald-glow: rgba(16, 185, 129, 0.18);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 html, body, #root {
-	height: 100%;
+  height: 100%;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-	margin: 0;
-	background-color: var(--bg-end);
-	background-image: radial-gradient(ellipse at 10% 10%, rgba(9,23,50,0.85) 0%, rgba(7,20,42,0.85) 30%, rgba(1,6,18,1) 100%), linear-gradient(180deg, var(--bg-start), var(--bg-end));
-	color: var(--text-color);
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+/* Personnalisation de la Sélection de texte */
+::selection {
+  background-color: rgba(16, 185, 129, 0.3);
+  color: #6ee7b7;
 }
 
-/* Links and interactive elements: slightly brighter for affordance */
+/* Personnalisation de la Barre de Défilement (Scrollbar) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #08121c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+  border: 2px solid #03070b;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-emerald);
+}
+
+/* Liens et éléments interactifs */
 a, button {
-	color: #BEE3FF;
+  color: inherit;
+  outline: none;
 }
 
-/* Utility: apply comfortable padding on main app container if needed */
+/* Code / Font Monospace */
+code, pre, .font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Conteneur principal */
+.portfolio-shell {
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+}
+
+.portfolio-shell section[id] {
+  scroll-margin-top: 88px;
+}
+
+/* Animations et effets d'arrière-plan Glassmorphism */
+.glass-panel {
+  background: rgba(11, 28, 43, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #203243;
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.15);
+}
+
+/* Utilitaires pour formulaires */
+.portfolio-shell input,
+.portfolio-shell textarea {
+  background-color: #0b1c2b;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  transition: all 0.2s ease-in-out;
+}
+
+.portfolio-shell input:focus,
+.portfolio-shell textarea:focus {
+  border-color: var(--accent-emerald);
+  box-shadow: 0 0 0 2px var(--accent-emerald-glow);
+}
+
+.portfolio-shell input::placeholder,
+.portfolio-shell textarea::placeholder {
+  color: #71869a;
+}
+
+/* Utilitaires pour conteneur principal */
 .app-container {
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

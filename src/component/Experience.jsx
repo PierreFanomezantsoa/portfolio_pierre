@@ -1,8 +1,8 @@
 import React from "react";
-import { ArrowUpRight, Github } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowUpRight, Github, FolderCode } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
-// Tes imports d'images (conservés)
+// Imports d'images
 import Note from "../img/notes.png";
 import Inscription from "../img/Inscription.png";
 import Medicine from "../img/medicine.png";
@@ -11,162 +11,217 @@ import Avions from "../img/affectation.jpg";
 import Kiosque from "../img/kiosque.jpg";
 import SID from "../img/geographique.png";
 
-
-
 const projects = [
   {
     name: "Inscription Étudiant",
-    description: "Solution sur mesure pour la Faculté DEGSS. Architecture robuste optimisée.",
+    description:
+      "Solution sur mesure pour la Faculté DEGSS. Architecture robuste optimisée pour la gestion des flux d'inscriptions.",
     image: Inscription,
     github: "https://github.com/PierreFanomezantsoa/projet_inscription.git",
     tags: ["Vue JS", "Node JS"],
   },
   {
     name: "Gestionnaire de Notes",
-    description: "Système académique centralisé pour EGS-MCI. Gestion automatisée.",
+    description:
+      "Système académique centralisé pour EGS-MCI. Gestion automatisée des relevés et des évaluations.",
     image: Note,
     github: "https://github.com/PierreFanomezantsoa/gestionNotes.git",
     tags: ["React", "Node.js"],
   },
   {
     name: "Mobile Money",
-    description: "Simulation d'échanges sécurisés en Java. Protocoles de chiffrement.",
+    description:
+      "Simulation d'échanges sécurisés en Java intégrant des protocoles de chiffrement et gestion des transactions.",
     image: Payment,
     github: "https://github.com/PierreFanomezantsoa/mobile_money.git",
     tags: ["Java", "MySQL"],
   },
   {
     name: "Logiciel de Medicines",
-    description: "Gestion d'officine avec analyse prédictive des stocks en temps réel.",
+    description:
+      "Gestion d'officine pharmaceutique avec suivi dynamique des stocks et gestion des ordonnances.",
     image: Medicine,
     github: "https://github.com/PierreFanomezantsoa/Medicines.git",
     tags: ["Vue.js", "Laravel"],
   },
   {
-    name: "Ordonnancement",
-    description: "Algorithmique avancée pour l'optimisation des ressources complexes.",
+    name: "Ordonnancement RO",
+    description:
+      "Algorithmique avancée et recherche opérationnelle pour l'optimisation d'affectation des ressources complexes.",
     image: Avions,
     github: "https://github.com/PierreFanomezantsoa/ProjeROAffectation.git",
     tags: ["React Native", "Algo"],
   },
   {
     name: "Kiosque Numérique",
-    description: "Interface mobile dynamique connectée à NestJS pour diffusion multimédia.",
+    description:
+      "Interface mobile dynamique connectée à NestJS pour la diffusion multimédia interactive.",
     image: Kiosque,
     github: "https://github.com/PierreFanomezantsoa/Front_kiosque.git",
     tags: ["React Native", "NestJS"],
   },
-   {
-    name: "Projet SID",
-    description: "Application décisionnelle basée sur Python Flask, React JS et Apache Hive, permettant l’exploration, l’analyse et la visualisation de données issues d’un environnement Data Warehouse.",
+  {
+    name: "Projet SID & Data Warehouse",
+    description:
+      "Application décisionnelle (Flask, React, Apache Hive) pour l'exploration et la visualisation de données massives.",
     image: SID,
     github: "https://github.com/PierreFanomezantsoa/Projet_SID.git",
-    tags: ["React JS", "Python Flask", "Apache Hive"],
+    tags: ["React JS", "Flask", "Apache Hive"],
   },
 ];
 
 export default function Portfolio() {
-  return (
-    <div id="portfolio" className="py-0 md:py-0 px-4 md:px-10 max-w-7xl mx-auto relative z-10">
-      
-      <div className="flex flex-col items-center text-center mb-16 md:mb-20">
-        <motion.span 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="text-green-400 text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block"
-        >
-          Ingénierie & Design
-        </motion.span>
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-6 leading-tight"
-        >
-          Mes <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-500">Projets</span>
-        </motion.h2>
-        <div className="h-1.5 w-14 bg-green-500/20 rounded-full"></div>
-      </div>
+  const prefersReducedMotion = useReducedMotion();
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-        {projects.map((project, i) => (
+  return (
+    <section
+      aria-labelledby="portfolio-heading"
+      className="relative py-16 md:py-24 px-4 md:px-8 bg-[#05070B] overflow-hidden"
+    >
+      {/* Texture de fond, cohérente avec About.jsx / Contact.jsx */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[linear-gradient(to_right,#152033_1px,transparent_1px),linear-gradient(to_bottom,#152033_1px,transparent_1px)] bg-[size:40px_40px] opacity-[0.15] pointer-events-none"
+      />
+      {/* Un seul halo d'accent, discret */}
+      <div
+        aria-hidden="true"
+        className="absolute top-0 right-1/4 w-[38rem] h-[38rem] bg-emerald-500/[0.06] rounded-full blur-[160px] pointer-events-none"
+      />
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* EN-TÊTE */}
+        <div className="flex flex-col items-center text-center mb-16 md:mb-20">
           <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
-            className="group relative flex flex-col aspect-[3/4.2]
-              rounded-[1rem] overflow-hidden border border-white/5 bg-slate-800 hover:border-green-500/50 transition-all duration-500 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.7)]"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-medium mb-5"
           >
-            {/* Image Container - MODIFIÉ : Pas de padding, bordures collées en haut/gauche/droite */}
-            <div className="relative h-[48%] w-full overflow-hidden">
-              <img
-                src={project.image}
-                alt={project.name}
-                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 brightness-[0.8]"
-              />
-              
-              {/* Overlay dégradé plus naturel vers le bas */}
-              <div className="absolute inset-0 " />
-              
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute top-4 right-4 p-3 bg-zinc-900/90 backdrop-blur-md border border-white/10 rounded-2xl text-white hover:bg-green-500 hover:text-zinc-950 transition-all duration-300 z-20"
-              >
-                <Github size={18} />
-              </a>
-            </div>
+            <FolderCode size={14} aria-hidden="true" /> Projets & réalisations
+          </motion.div>
 
-            {/* Corps de la carte */}
-            <div className="px-8 pb-8 pt-6 flex flex-col flex-grow"> 
-              <div className="flex gap-2 mb-5 flex-wrap">
-                {project.tags?.map((tag, index) => (
-                  <span
-                    key={index}
-                    className="text-[9px] uppercase tracking-widest font-bold px-3 py-1.5 bg-slate-700/50 text-green-400 rounded-lg border border-white/5 group-hover:border-green-500/30 transition-all"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+          <motion.h2
+            id="portfolio-heading"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.08 }}
+            className="text-4xl sm:text-5xl md:text-6xl font-semibold text-slate-50 tracking-tight"
+          >
+            Travaux sélectionnés
+          </motion.h2>
 
-              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-green-400 transition-colors duration-300 tracking-tight">
-                {project.name}
-              </h3>
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15 }}
+            className="mt-4 text-slate-300 text-sm md:text-base max-w-xl leading-relaxed"
+          >
+            Une sélection d'applications web, mobiles et de solutions d'ingénierie logicielle développées pour des besoins réels.
+          </motion.p>
+        </div>
 
-              <p className="text-white/70 text-sm leading-relaxed mb-6 font-normal line-clamp-3 group-hover:text-white/90 transition-colors">
-                {project.description}
-              </p>
+        {/* GRILLE DE CARTES */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          {projects.map((project, i) => (
+            <motion.article
+              key={project.name}
+              initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: Math.min(i * 0.06, 0.3) }}
+              className="group relative flex flex-col rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 transition-colors duration-300 overflow-hidden"
+            >
+              {/* IMAGE DE COUVERTURE */}
+              <div className="relative h-48 w-full overflow-hidden bg-slate-950">
+                <img
+                  src={project.image}
+                  alt={`Capture d'écran du projet ${project.name}`}
+                  loading="lazy"
+                  className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105 brightness-90 group-hover:brightness-100"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/10 to-transparent"
+                />
 
-              {/* Footer de carte */}
-              <div className="mt-auto pt-6 border-t border-white/5 flex justify-between items-center">
+                {/* Bouton GitHub flottant */}
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/btn flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-all"
+                  aria-label={`Voir le code source du projet ${project.name} sur GitHub`}
+                  className="absolute top-3 right-3 p-2.5 bg-slate-900/85 backdrop-blur-md border border-slate-700 rounded-lg text-slate-300 hover:text-slate-950 hover:bg-emerald-400 hover:border-emerald-400 transition-colors duration-200
+                             focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
                 >
-                  Détails
-                  <ArrowUpRight size={16} className="text-green-500 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                  <Github size={16} aria-hidden="true" />
                 </a>
-                <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_12px_rgba(20,184,166,0.8)]" />
               </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
 
-      {/* Signature Mat */}
-      <div className="mt-16 text-center">
-        <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full border border-white/5 bg-slate-800 shadow-2xl">
-           <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(20,184,166,0.5)]"></span>
-           <p className="text-white/80 text-[10px] font-bold tracking-[0.4em] uppercase">
-             Disponible 2026 • Madagascar
-           </p>
+              {/* CONTENU DE LA CARTE */}
+              <div className="p-5 sm:p-6 flex flex-col flex-grow">
+                {/* TAGS TECHNOLOGIQUES */}
+                <div className="flex gap-1.5 mb-3 flex-wrap">
+                  {project.tags?.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[11px] font-medium px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-300 border border-emerald-500/20"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* TITRE DU PROJET */}
+                <h3 className="text-lg font-semibold text-slate-50 mb-1.5 tracking-tight">
+                  {project.name}
+                </h3>
+
+                {/* DESCRIPTION */}
+                <p className="text-slate-300 text-sm leading-relaxed mb-6 line-clamp-3">
+                  {project.description}
+                </p>
+
+                {/* FOOTER CARTE */}
+                <div className="mt-auto pt-4 border-t border-slate-800 flex items-center justify-between">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/link flex items-center gap-1.5 text-[13px] font-medium text-slate-300 hover:text-emerald-300 transition-colors
+                               focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300 rounded-sm"
+                  >
+                    <span>Code source</span>
+                    <ArrowUpRight
+                      size={14}
+                      aria-hidden="true"
+                      className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform"
+                    />
+                  </a>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/50 group-hover:bg-emerald-400 transition-colors" aria-hidden="true" />
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+
+        {/* LIEN VERS GITHUB */}
+        <div className="mt-16 text-center">
+          <a
+            href="https://github.com/PierreFanomezantsoa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-lg border border-slate-800 bg-slate-900/80 hover:bg-slate-800 hover:border-slate-700 text-slate-300 hover:text-white text-sm font-medium transition-colors duration-200
+                       focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
+          >
+            <Github size={16} className="text-emerald-400" aria-hidden="true" />
+            <span>Voir tous les dépôts sur GitHub</span>
+            <ArrowUpRight size={15} aria-hidden="true" />
+          </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
