@@ -1,5 +1,5 @@
 import React from "react";
-import { Linkedin, Github, Mail, Globe, ArrowUp, Code2 } from "lucide-react";
+import { Linkedin, Github, Mail, Facebook, ArrowUp } from "lucide-react";
 import { useReducedMotion } from "framer-motion";
 
 function Footer() {
@@ -30,7 +30,7 @@ function Footer() {
     },
     {
       href: "https://www.facebook.com/herman.rnp/",
-      icon: <Globe size={16} aria-hidden="true" />,
+      icon: <Facebook size={16} aria-hidden="true" />,
       title: "Facebook",
     },
     {
@@ -54,18 +54,17 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
         {/* GRILLE PRINCIPALE */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-16 mb-12 md:mb-16">
-          {/* Colonne 1 : Branding */}
+          {/* Colonne 1 : Branding — même logo "file tab" que la navbar, pour rester cohérent */}
           <div className="col-span-1 sm:col-span-2 flex flex-col items-center md:items-start text-center md:text-left">
             <a
               href="#home"
-              className="flex items-center gap-2.5 mb-4 group select-none rounded-lg
+              className="inline-flex items-center gap-1.5 mb-4 px-3 py-1.5 rounded-lg bg-[#0b1c2b] border border-slate-700/80 select-none group
                          focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
             >
-              <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-400 group-hover:text-slate-950 transition-colors duration-200">
-                <Code2 size={18} aria-hidden="true" />
-              </div>
-              <span className="text-slate-50 font-semibold tracking-tight text-xl md:text-2xl">
-                Pierre<span className="text-emerald-400">.</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-400 group-hover:animate-pulse" aria-hidden="true" />
+              <span className="font-mono text-sm text-slate-200">
+                pierre<span className="text-slate-500">.</span>
+                <span className="text-emerald-400">dev</span>
               </span>
             </a>
 
@@ -76,9 +75,7 @@ function Footer() {
 
           {/* Colonne 2 : Navigation */}
           <div className="flex flex-col items-center md:items-start gap-4">
-            <span className="text-[13px] font-medium text-emerald-300">
-              Navigation
-            </span>
+            <span className="font-mono text-xs text-slate-500"> navigation</span>
             <nav className="flex flex-col items-center md:items-start gap-2.5" aria-label="Navigation du pied de page">
               {navItems.map((item) => (
                 <a
@@ -96,9 +93,7 @@ function Footer() {
 
           {/* Colonne 3 : Réseaux & Contact */}
           <div className="flex flex-col items-center md:items-start gap-4">
-            <span className="text-[13px] font-medium text-emerald-300">
-              Réseaux et contact
-            </span>
+            <span className="font-mono text-xs text-slate-500"> réseaux &amp; contact</span>
             <div className="flex gap-2.5">
               {socialLinks.map((social) => (
                 <SocialIcon

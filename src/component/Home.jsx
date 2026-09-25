@@ -7,7 +7,7 @@ import Portfolio from "./Portfolio";
 import Experience from "./Experience";
 import Contact from "./Contact";
 import Footer from "./Footer";
-import image1 from "../img/pierre-modified.png";
+import image1 from "../img/pierre-modified.jpg";
 
 const sections = ["home", "about", "portfolio", "experience", "contact"];
 const sectionLabels = {
